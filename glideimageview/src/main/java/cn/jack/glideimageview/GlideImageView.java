@@ -40,6 +40,8 @@ public class GlideImageView extends ImageView {
     private int blurRadius = 1;
     private int blurSampling = 1;
 
+    private RequestOptions scaleType = null;
+
     public GlideImageView(Context context) {
         super(context);
         init(context, null);
@@ -161,6 +163,17 @@ public class GlideImageView extends ImageView {
         into();
     }
 
+    private void fitCenter() {
+        scaleType = RequestOptions.fitCenterTransform();
+    }
+
+    private void centerCrop() {
+        scaleType = RequestOptions.centerCropTransform();
+    }
+
+    private void centerInside() {
+        scaleType = RequestOptions.centerInsideTransform();
+    }
 
     private void into() {
         updateRequestBuilder(requestBuilder);
@@ -182,6 +195,10 @@ public class GlideImageView extends ImageView {
         }
         if (errorResId > 0) {
             builder.apply(RequestOptions.errorOf(holderResId));
+        }
+
+        if (scaleType != null) {
+            builder.apply(scaleType);
         }
     }
 }
