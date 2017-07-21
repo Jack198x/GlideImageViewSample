@@ -163,15 +163,15 @@ public class GlideImageView extends ImageView {
         into();
     }
 
-    private void fitCenter() {
+    public void fitCenter() {
         scaleType = RequestOptions.fitCenterTransform();
     }
 
-    private void centerCrop() {
+    public void centerCrop() {
         scaleType = RequestOptions.centerCropTransform();
     }
 
-    private void centerInside() {
+    public void centerInside() {
         scaleType = RequestOptions.centerInsideTransform();
     }
 
