@@ -10,8 +10,8 @@
         android:id="@+id/glide"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:borderWidth="2dp"
-        app:borderColor="#2B2B2B"
+        app:borderWidth="1dp"
+        app:borderColor="#3C3F41"
         app:transformation="oval" />
 
 

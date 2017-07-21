@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 100
-        versionName "1.0.0"
+        versionCode 101
+        versionName "1.0.1"
     }
     buildTypes {
         release {
@@ -31,5 +31,5 @@ publish {
     artifactId = 'glideimageview'
     publishVersion = '1.0.0'
     desc = 'Glide ImageView '
-    website = 'https://github.com/Jack198x/PicassoImageViewSample'
+    website = 'https://github.com/Jack198x/GlideImageViewSample'
 }

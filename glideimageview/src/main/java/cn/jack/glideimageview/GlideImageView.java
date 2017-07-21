@@ -84,17 +84,7 @@ public class GlideImageView extends ImageView {
                 }
                 if (transformationType == 0) {
                     //normal
-                    if (typedArray.hasValue(R.styleable.GlideImageView_borderWidth)) {
-                        borderWidth = typedArray.getDimensionPixelSize(R.styleable.GlideImageView_borderWidth, 0);
-                    }
-                    if (typedArray.hasValue(R.styleable.GlideImageView_borderColor)) {
-                        borderColor = typedArray.getColor(R.styleable.GlideImageView_borderColor, Color.parseColor("#FFFFFF"));
-                    }
-                    RoundedTransformation roundedTransformation = new RoundedTransformation();
-                    roundedTransformation.setBorderColor(borderColor);
-                    roundedTransformation.setBorderWidth(borderWidth);
-                    roundedTransformation.oval(false);
-                    transformation = roundedTransformation;
+                    transformation = null;
                 }
                 if (transformationType == 1) {
                     //round

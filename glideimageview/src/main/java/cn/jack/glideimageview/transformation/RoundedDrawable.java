@@ -130,6 +130,27 @@ public class RoundedDrawable extends Drawable {
         return bitmap;
     }
 
+
+    public static Bitmap drawableToBitmap(Drawable drawable, Bitmap bitmap) {
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable) drawable).getBitmap();
+        }
+        int width = Math.max(drawable.getIntrinsicWidth(), 2);
+        int height = Math.max(drawable.getIntrinsicHeight(), 2);
+        try {
+            Canvas canvas = new Canvas(bitmap);
+            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+            drawable.draw(canvas);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.w(TAG, "Failed to create bitmap from drawable!");
+            bitmap = null;
+        }
+
+        return bitmap;
+    }
+
+
     public Bitmap getSourceBitmap() {
         return mBitmap;
     }
@@ -616,6 +637,10 @@ public class RoundedDrawable extends Drawable {
     }
 
     public Bitmap toBitmap() {
+        return drawableToBitmap(this);
+    }
+
+    public Bitmap toBitmap(Bitmap bitmap) {
         return drawableToBitmap(this);
     }
 }
