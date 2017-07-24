@@ -9,10 +9,7 @@
     <cn.jack.glideimageview.GlideImageView
         android:id="@+id/glide"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:borderWidth="1dp"
-        app:borderColor="#3C3F41"
-        app:transformation="oval" />
+        android:layout_height="match_parent" />
 
 
 </RelativeLayout>

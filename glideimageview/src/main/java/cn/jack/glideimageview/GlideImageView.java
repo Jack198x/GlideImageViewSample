@@ -3,6 +3,7 @@ package cn.jack.glideimageview;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.DrawableRes;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.io.File;
@@ -27,7 +29,7 @@ import cn.jack.glideimageview.transformation.RoundedTransformation;
 
 public class GlideImageView extends ImageView {
 
-    private RequestBuilder requestBuilder;
+    private RequestBuilder<Drawable> requestBuilder;
 
     private int holderResId = 0;
     private int errorResId = 0;
@@ -137,9 +139,8 @@ public class GlideImageView extends ImageView {
             } finally {
                 typedArray.recycle();
             }
+            into();
         }
-
-
     }
 
 
@@ -187,15 +188,19 @@ public class GlideImageView extends ImageView {
 
     private void into() {
         updateRequestBuilder(requestBuilder);
-        requestBuilder.into(this);
+        if (requestBuilder != null) {
+            requestBuilder.into(this);
+        }
     }
 
-    private void updateRequestBuilder(RequestBuilder builder) {
+    private void updateRequestBuilder(RequestBuilder<Drawable> builder) {
         if (builder == null) {
             return;
         }
         if (noAnimation) {
             builder.apply(RequestOptions.noAnimation());
+        } else {
+            builder.transition(DrawableTransitionOptions.withCrossFade());
         }
         if (transformation != null) {
             builder.apply(RequestOptions.bitmapTransform(transformation));
@@ -212,6 +217,5 @@ public class GlideImageView extends ImageView {
         if (override != null) {
             builder.apply(override);
         }
-
     }
 }

@@ -13,6 +13,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         GlideImageView glideImageView=(GlideImageView)findViewById(R.id.glide);
-        glideImageView.setImageUrl("http://img0.imgtn.bdimg.com/it/u=2158975693,779167620&fm=214&gp=0.jpg");
+        glideImageView.setImageUrl("http://dl.bizhi.sogou.com/images/2012/04/18/56631.jpg");
     }
 }
